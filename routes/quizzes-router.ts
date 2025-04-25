@@ -1,16 +1,12 @@
-import { postQuizzes, getQuizByUserId } from "../controllers/quizzes_controller";
 import { Router } from "express";
+import { postQuizzes, getQuizByUserId } from "../controllers/quizzes_controller";
 
 const quizzesRouter = Router();
-  
-  quizzesRouter
-    .post("/", postQuizzes);
-  
-  quizzesRouter
-    .get("/:question_id", getQuizByUserId)
 
-  
+// POST /api/quizzes - create a new quiz
+quizzesRouter.post("/", postQuizzes);
 
-  
+// GET /api/quizzes/:user_id - get quizzes by user id
+quizzesRouter.get("/:user_id", getQuizByUserId);
 
-  export default quizzesRouter
+export default quizzesRouter;

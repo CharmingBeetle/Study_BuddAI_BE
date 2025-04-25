@@ -15,10 +15,6 @@ interface QuizParams {
 
 export const createQuiz = async (params: QuizParams) => {
 
-
-  
-  // Add this debug log immediately
-
   // Validate all parameters
   if (Object.values(params).some(val => 
     typeof val === 'number' ? isNaN(val) : !val

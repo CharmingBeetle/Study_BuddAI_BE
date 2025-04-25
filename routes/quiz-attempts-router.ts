@@ -1,17 +1,12 @@
-
-import { postAttempt, postResults } from "../controllers/attempt_controller";
 import { Router } from "express";
+import { postAttempt, getResults } from "../controllers/attempt_controller";
 
+const quizAttemptsRouter = Router();
 
- const quizAttemptsRouter = Router();
+// // POST /api/attempt - create a new quiz attempt
+quizAttemptsRouter.post("/", postAttempt);
 
-quizAttemptsRouter
-    .post("/", postAttempt)
-
-    quizAttemptsRouter
-    .post("/:attempt_id/submit", postResults)
-
-
-
+// GET /api/attempt/:attempt_id/submit - saves to db
+quizAttemptsRouter.get("/:attempt_id/submit", getResults);
 
 export default quizAttemptsRouter;

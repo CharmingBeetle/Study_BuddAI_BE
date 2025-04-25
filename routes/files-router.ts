@@ -4,15 +4,11 @@ import uploadFiles from '../controllers/files_controller';
 const filesRouter = express.Router();
 import multerErrorHandler from '../middleware/multerErrorHandler';
 
-filesRouter.get('/test', (req, res) => {
-  res.json({ message: "Router is working!" });
-});
-
+// POST /api/files/upload - create a new file
 filesRouter.post('/upload', 
   upload.single('file'),
   multerErrorHandler, 
   uploadFiles
   )
  
-
-export default filesRouter;
+  export default filesRouter;

@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { postAnswerAttempt,getAttemptAnswerByQuestionId } from "../controllers/answers_attempt_controller";
+import { postAnswerAttempt, getAttemptAnswerByQuestionId } from "../controllers/answers_attempt_controller";
 
- const answersAttemptRouter = Router();
+const answersAttemptRouter = Router();
 
-answersAttemptRouter.post("/:question_id", getAttemptAnswerByQuestionId);
-answersAttemptRouter.get("/", postAnswerAttempt);
+// POST /api/attempt_answer - create a new answer attempt
+answersAttemptRouter.post("/", postAnswerAttempt);
 
-export default answersAttemptRouter
+// GET /api/attempt_answer/:question_id - get answer attempt by question id
+answersAttemptRouter.get("/:question_id", getAttemptAnswerByQuestionId);
+
+
+export default answersAttemptRouter;
