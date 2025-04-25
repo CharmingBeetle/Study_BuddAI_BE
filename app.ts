@@ -1,11 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
 require("dotenv").config();
 import express from "express";
 import cors from "cors";
 const app = express();
 app.use(cors());
 app.use(express.json());
-import { Request, Response, NextFunction } from "express";
-import multer from "multer";
+import { Request, Response } from "express";
 
 const {
   handleServerErrors,
@@ -34,16 +35,6 @@ import { postAttempt, postResults } from "./controllers/attempt_controller";
 import generateQuiz from "./controllers/generateQuiz_controller";
 
 
-
-
-// const { getEndpoints } = require("./controllers/endpoints_controller")
-// const { uploadFiles } = require("../controllers/files_controller")
-
-// const { getQuestionsById, postQuestions } = require("../controllers/questions_controller")
-// const { getOptionsByQuestionId, postOptions } = require("../controllers/options_controller")
-// const { getAnswerAttemptByOptionId, postAnswerAttemptByOptionId } = require("../controllers/answers_attempt_controller")
-// const { postAttempt, updateQuizAttemptById } = require("../controllers/quiz_attempts_controller")
-
 //MIDDLEWARE
 app.use(cors());
 app.use(express.json());
@@ -54,13 +45,11 @@ app.get("/", (req, res) => {
   res.send("Server running");
 });
 
-// //Users
+//Users
 app.post("/api/users", postUsers);
 
-// //PDF files
-// app.post("/upload", uploadFiles)
 
-// //Quizzes
+//Quizzes
 app.post("/api/quizzes", postQuizzes);
 app.get("/api/quizzes/:user_id", getQuizByUserId);
 // app.patch("/quizzes/:quiz_id", updateQuizById) //quizzes/:quiz_id/scores ??git
@@ -85,24 +74,17 @@ app.get("/api/attempt/:attempt_id/submit", postResults); //posts to db
 
 // app.patch("/attempt/:attempt_id"), updateQuizAttemptById //update score
 
-// app.post("/api/generate-quiz", generateQuiz);
-
+// QUIZ GENERATION
 app.post("/api/generate_quiz", generateQuiz ); //use this one
-// // *******************************************************************************
+// *******************************************************************************
 
-// //ERROR HANDLING
-// app.all("*", (req:Request, res:Response):any => {
-//     res.status(404).send({ msg: "Path not found" });
-//   });
+//ERROR HANDLING
+app.all("*", (req:Request, res:Response):any => {
+    res.status(404).send({ msg: "Path not found" });
+  });
 
 app.use(handleMySqlErrors);
 app.use(handleCustomErrors);
 app.use(handleServerErrors);
-
-// const PORT = process.env.PORT || 8080;
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
 
 export default app;

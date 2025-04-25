@@ -1,15 +1,10 @@
 "use strict";
-// import { postQuizzes, getQuizByUserId, updateQuizById, deleteQuizById } from "../controllers/quizzes_controller";
-// import { Router } from "express";
-// const quizzesRouter = Router();
-//   quizzesRouter
-//     .route("/quizzes")
-//     .post(postQuizzes);
-//   quizzesRouter
-//     .route("/:user_id")
-//     .get(getQuizByUserId)
-//   quizzesRouter
-//     .route("/:quiz_id")
-//     .patch(updateQuizById)
-//     .delete(deleteQuizById);
-//   export default quizzesRouter
+Object.defineProperty(exports, "__esModule", { value: true });
+const quizzes_controller_1 = require("../controllers/quizzes_controller");
+const express_1 = require("express");
+const quizzesRouter = (0, express_1.Router)();
+quizzesRouter
+    .post("/", quizzes_controller_1.postQuizzes);
+quizzesRouter
+    .get("/:question_id", quizzes_controller_1.getQuizByUserId);
+exports.default = quizzesRouter;

@@ -1,11 +1,10 @@
 "use strict";
-// import { postQuizAttempt, updateQuizAttemptById } from "../controllers/quiz_attempts_controller";
-// import { Router } from "express";
-//  const quizAttemptsRouter = Router();
-// quizAttemptsRouter
-//     .route("/attempt")
-//     .post(postQuizAttempt)
-// quizAttemptsRouter
-//     .route("/attempt/:attempt_id")
-//     .patch(updateQuizAttemptById)
-// export default quizAttemptsRouter;
+Object.defineProperty(exports, "__esModule", { value: true });
+const attempt_controller_1 = require("../controllers/attempt_controller");
+const express_1 = require("express");
+const quizAttemptsRouter = (0, express_1.Router)();
+quizAttemptsRouter
+    .post("/", attempt_controller_1.postAttempt);
+quizAttemptsRouter
+    .post("/:attempt_id/submit", attempt_controller_1.postResults);
+exports.default = quizAttemptsRouter;

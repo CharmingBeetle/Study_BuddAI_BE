@@ -6,13 +6,15 @@
         "description": "adds a new user to the database",
         "queries": [],
         "exampleRequest": {
-            "user": [
-                { "username": "Sweetea 456", "email": "sweetea@gmail.com" }
-            ]
+            "user": [{ "username": "Sweetea 456", "email": "sweetea@gmail.com" }]
         },
         "exampleResponse": {
             "user": [
-                { "user_id": "5", "username": "Sweetea 456", "email": "sweetea@gmail.com" }
+                {
+                    "user_id": "5",
+                    "username": "Sweetea 456",
+                    "email": "sweetea@gmail.com"
+                }
             ]
         }
     },
@@ -53,40 +55,17 @@
             ]
         }
     },
-    "GET /api/quizzes": {
-        "description": "serves an array of all quizzes ordered by date descending",
-        "queries": ["score", "sort_by", "order"],
-        "exampleResponse": {
-            "quizzes": [
-                {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                }
-            ]
-        }
-    },
-    "POST /api/quizzes/:quiz_id": {
+    "POST /api/quizzes": {
         "description": "stores generated quizzes to database",
         "queries": [],
         "exampleRequest": {
-            "quizzes": {},
-            "exampleReponse": [
-                {}
-            ]
+            "quiz": {
+                "quiz_id": 5,
+                "created_at": "2025-04-17T07:44:08.000Z",
+                "user_id": 2,
+                "quiz_name": "Test post quiz",
+                "file_id": 3
+            }
         }
     },
     "GET /api/quizzes/:user_id": {
@@ -95,95 +74,28 @@
         "exampleResponse": {
             "quizzes": [
                 {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
+                    "quiz_id": 4,
+                    "created_at": "2025-04-14T11:45:00.000Z",
+                    "user_id": 3,
+                    "quiz_name": "Intro to Literature",
+                    "file_id": 4
                 }
             ]
         }
-    },
-    "PATCH /api/quizzes/:quiz_id": {
-        "description": "updates the score of a quiz",
-        "queries": [],
-        "requestBody": {
-            "score": "newScore as a percentage"
-        },
-        "exampleRequest": { "score": "80%" },
-        "exampleResponse": {
-            "quiz": [
-                {
-                    "user_id": "4",
-                    "quiz_id": "quiz_id",
-                    "quiz_name": 1,
-                    "score": "80%",
-                    "created_at": "2020-04-06, 13:17:00"
-                }
-            ]
-        }
-    },
-    "DELETE /api/quizzes/:quiz_id": {
-        "description": "removes quiz record by quiz ID",
-        "exampleResponse": {}
     },
     "POST /api/questions": {
         "description": "post an array of generated questions per quiz ID to the database",
         "queries": [],
         "exampleRequest": {
-            "questions": [
-                {
-                    "questions_id": "1",
-                    "quiz_id": "1",
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "questions_id": "2",
-                    "quiz_id": "1",
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "questions_id": "3",
-                    "quiz_id": "1",
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "questions_id": "4",
-                    "quiz_id": "1",
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "questions_id": "5",
-                    "quiz_id": "1",
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                }
-            ]
+            "quiz_id": 3,
+            "question_body": "what is 4 + 4 ?"
+        },
+        "exampleResponse": {
+            "question": {
+                "question_id": 5,
+                "quiz_id": 3,
+                "question_body": "what is 4 + 4 ?"
+            }
         }
     },
     "GET /api/questions/:quiz_id": {
@@ -192,34 +104,14 @@
         "exampleResponse": {
             "questions": [
                 {
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
+                    "question_id": 1,
+                    "quiz_id": 1,
+                    "question_body": "What is the chemical symbol for water?"
                 },
                 {
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
-                },
-                {
-                    "question_text": "What is the biggest animal in the world:",
-                    "answers_options": { "A": "Lion", "B": "Tiger", "C": "Bear", "D": "Oh my!" },
-                    "correct_answer": "C",
-                    "created_at": "2020-04-06, 13:17:00"
+                    "question_id": 2,
+                    "quiz_id": 1,
+                    "question_body": "How many planets are in our solar system?"
                 }
             ]
         }
@@ -257,6 +149,67 @@
                     "attempt_answer_id...": "example_value"
                 }
             ]
+        }
+    },
+    "POST /api/:user_id/generate_quiz": {
+        "description": "generates a quiz",
+        "queries": [],
+        "exampleRequest": {
+            "quiz_name": "My quiz about dogs"
+        },
+        "exampleResponse": {
+            "quiz": {
+                "title": "My quiz about dogs",
+                "questions": [
+                    {
+                        "text": "Which of the following is NOT a true statement about dogs?",
+                        "options": [["Object"], ["Object"], ["Object"], ["Object"]]
+                    },
+                    {
+                        "text": "How many words, roughly, can a dog learn?",
+                        "options": [["Object"], ["Object"], ["Object"], ["Object"]]
+                    },
+                    {
+                        "text": "Which dog breed is born without spots?",
+                        "options": [["Object"], ["Object"], ["Object"], ["Object"]]
+                    },
+                    {
+                        "text": "Which of these statements regarding dogs is most accurate?",
+                        "options": [["Object"], ["Object"], ["Object"], ["Object"]]
+                    }
+                ]
+            }
+        }
+    },
+    "POST /api/attempt/1/submit": {
+        "description": "generates results",
+        "queries": [],
+        "exampleResponse": {
+            "result": {
+                "questions": [
+                    {
+                        "question_body": "What is the chemical symbol for water?",
+                        "attempted_answer": "H2O",
+                        "correct_answer": "H2O"
+                    },
+                    {
+                        "question_body": "How many planets are in our solar system?",
+                        "attempted_answer": "Nine",
+                        "correct_answer": "Eight"
+                    },
+                    {
+                        "question_body": "Who was the first Roman Emperor?",
+                        "attempted_answer": "Nero",
+                        "correct_answer": "Augustus"
+                    },
+                    {
+                        "question_body": "What is 2 + 2?",
+                        "attempted_answer": 3,
+                        "correct_answer": 4
+                    }
+                ],
+                "score": 0.25
+            }
         }
     }
 }

@@ -8,16 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const users_model_1 = require("../models/users_model");
-const postUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const newUser = req.body;
-    try {
-        const user = yield (0, users_model_1.insertUser)(newUser);
-        res.status(201).send({ user });
+const connection_1 = __importDefault(require("../db/connection"));
+const validateAndGetUserId = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const user_id = Number(userId);
+    if (isNaN(user_id)) {
+        throw new Error('Invalid user ID format');
     }
-    catch (err) {
-        next(err);
+    const [rows] = yield connection_1.default.execute('SELECT user_id FROM users WHERE user_id = ?', [user_id]);
+    if (!rows.length) {
+        throw new Error('User not found');
     }
+    return rows[0].user_id;
 });
-exports.default = postUsers;
+exports.default = validateAndGetUserId;

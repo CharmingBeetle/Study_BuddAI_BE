@@ -12,12 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.extractTextFromPdf = void 0;
 const pdf_parse_1 = __importDefault(require("pdf-parse"));
 const extractTextFromPdf = (buffer) => __awaiter(void 0, void 0, void 0, function* () {
-    const { text } = yield (0, pdf_parse_1.default)(buffer);
-    return {
-        text,
-    };
+    try {
+        const data = yield (0, pdf_parse_1.default)(buffer);
+        return { text: data.text };
+    }
+    catch (err) {
+        console.error("PDF Parse Error:");
+        throw new Error(`PDF processing failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    }
 });
-exports.extractTextFromPdf = extractTextFromPdf;
+exports.default = extractTextFromPdf;

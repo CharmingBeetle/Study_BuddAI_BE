@@ -1,10 +1,8 @@
 "use strict";
-// import { Router } from "express";
-// import getAnswerAttemptByOptionId from "../controllers/answers_attempt_controller";
-// import postAnswerAttemptByOptionId from "../controllers/answers_attempt_controller"
-//  const answersAttemptRouter = Router();
-// answersAttemptRouter
-//     .route("/attempt_answer/:answer_options_id")
-//     .get(getAnswerAttemptByOptionId)
-//     .post(postAnswerAttemptByOptionId);
-// export default answersAttemptRouter
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const answers_attempt_controller_1 = require("../controllers/answers_attempt_controller");
+const answersAttemptRouter = (0, express_1.Router)();
+answersAttemptRouter.post("/:question_id", answers_attempt_controller_1.getAttemptAnswerByQuestionId);
+answersAttemptRouter.get("/", answers_attempt_controller_1.postAnswerAttempt);
+exports.default = answersAttemptRouter;

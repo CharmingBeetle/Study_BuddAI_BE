@@ -95,7 +95,7 @@ const seed = (_a) => __awaiter(void 0, [_a], void 0, function* ({ usersData, fil
     yield connection.query(`CREATE TABLE attempt (
         attempt_id INT AUTO_INCREMENT PRIMARY KEY,
         quiz_id INT NOT NULL, FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id),
-        score DECIMAL(2,2) DEFAULT 0 
+        score DECIMAL(4,2) DEFAULT 0 
       );
     `);
     //0 total digits can’t hold 2 decimal digits.

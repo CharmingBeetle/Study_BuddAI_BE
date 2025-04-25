@@ -9,28 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postOptions = exports.getOptionsByQuestionId = void 0;
-const options_model_1 = require("../models/options_model");
-const getOptionsByQuestionId = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const { question_id } = req.params;
-    const questionId = Number(question_id);
+exports.postResults = exports.postAttempt = void 0;
+const attempt_models_1 = require("../models/attempt_models");
+const generateResults_1 = require("../generateResults");
+const postAttempt = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { quiz_id } = req.body;
     try {
-        const questionOptions = yield (0, options_model_1.fetchQuestionOptions)(questionId);
-        res.status(200).send({ questionOptions });
+        const attempt = yield (0, attempt_models_1.insertAttempt)(quiz_id);
+        res.status(201).send({ attempt });
     }
     catch (err) {
         next(err);
     }
 });
-exports.getOptionsByQuestionId = getOptionsByQuestionId;
-const postOptions = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const { question_id, option_body, is_correct, label } = req.body;
+exports.postAttempt = postAttempt;
+const postResults = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const questionOption = yield (0, options_model_1.insertQuestionOption)(question_id, option_body, is_correct, label);
-        res.status(201).send({ questionOption });
+        const attemptId = Number(req.params.attempt_id);
+        const result = yield (0, generateResults_1.generateResults)(attemptId);
+        res.status(200).send({ result });
     }
     catch (err) {
+        // console.log(err)
         next(err);
     }
 });
-exports.postOptions = postOptions;
+exports.postResults = postResults;

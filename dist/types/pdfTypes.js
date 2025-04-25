@@ -1,2 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+// interface PDFDocument {
+//   file_text: string;
+//   user_id:number
+// }
+// export { PDFDocument };

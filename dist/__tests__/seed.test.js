@@ -561,7 +561,7 @@ describe("data insertion", () => {
         return connection_1.default
             .query(`SELECT * FROM attemptAnswer;`)
             .then(([attemptAnswers]) => {
-            expect(attemptAnswers).toHaveLength(4);
+            expect(attemptAnswers).toHaveLength(8);
             attemptAnswers.forEach((attemptAnswer) => {
                 expect(attemptAnswer).toHaveProperty("attempt_answer_id");
                 expect(attemptAnswer).toHaveProperty("question_options_id");

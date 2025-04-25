@@ -13,28 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const connection_1 = __importDefault(require("../db/connection"));
-const insertFileData = (doc) => __awaiter(void 0, void 0, void 0, function* () {
+const insertFileData = (text, user_id) => __awaiter(void 0, void 0, void 0, function* () {
     let dbConnection = yield connection_1.default.getConnection();
     try {
-        if (!dbConnection) {
-            throw new Error('Database connection failed');
-        }
-        yield dbConnection.execute(`INSERT INTO files 
-       (file_text)
-       VALUES (?, ?)`, [doc.file_text]);
+        const [result] = yield dbConnection.execute(`INSERT INTO files 
+       (file_text, user_id)
+       VALUES (?, ?)`, [text, user_id]);
+        return { file_id: result.insertId };
     }
     catch (error) {
-        console.error('Database insertion error:', error);
-        throw new Error('Failed to insert PDF data');
+        console.error("Database insertion error:", error);
+        throw new Error("Failed to insert PDF data");
     }
     finally {
-        if (dbConnection) {
-            if ('release' in dbConnection) {
-                if (typeof dbConnection.release === 'function') {
-                    dbConnection.release();
-                }
-            }
-        }
+        dbConnection.release();
     }
 });
 exports.default = insertFileData;

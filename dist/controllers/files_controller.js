@@ -12,36 +12,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const connection_1 = __importDefault(require("../db/connection"));
-const pdfParse_1 = require("../services/pdfParse");
+const pdfParse_1 = __importDefault(require("../services/pdfParse"));
 const files_model_1 = __importDefault(require("../models/files_model"));
 const uploadFiles = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!req.file) {
-        res.status(400).json({ error: 'No PDF uploaded' });
-        return;
-    }
-    let dbConnection = yield connection_1.default.getConnection();
+    const file = req.file;
     try {
-        const result = yield (0, pdfParse_1.extractTextFromPdf)(req.file.buffer);
-        const text = result.text;
-        const doc = {
-            file_text: text,
-        };
-        yield (0, files_model_1.default)(doc);
+        if (!file) {
+            res.status(400).json({ error: "No PDF uploaded" });
+            return;
+        }
+        const { text } = yield (0, pdfParse_1.default)(file.buffer);
+        const user_id = parseInt(req.body.user_id);
+        if (isNaN(user_id)) {
+            res.status(400).json({ error: "Invalid user ID" });
+            return;
+        }
+        const { file_id } = yield (0, files_model_1.default)(text, user_id);
         res.status(201).json({
             success: true,
-            message: 'PDF processed and saved successfully',
-        })
-            .end();
+            message: "PDF text saved to database",
+            file_id: file_id
+        });
     }
-    catch (error) {
-        console.error('Processing error:', error);
-        res.status(500).json({ error: 'PDF processing failed' });
-    }
-    finally {
-        if (dbConnection && typeof dbConnection.release === 'function') {
-            dbConnection.release();
-        }
+    catch (err) {
+        console.error("PDF extraction failed:", err);
+        res.status(500).json({
+            error: "PDF processing failed."
+        });
     }
 });
 exports.default = uploadFiles;
