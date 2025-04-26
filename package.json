@@ -11,7 +11,8 @@
     "dev": "nodemon --exec ts-node listen.ts",
     "start": "ts-node listen.ts",
     "test-seed": "jest seed.test.ts",
-    "seed-prod": "NODE_ENV=production npm run seed-dev"
+    "seed-prod": "NODE_ENV=production npm run seed-dev",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

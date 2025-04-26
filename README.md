@@ -15,7 +15,7 @@ Study BuddAI allows users to upload their PDF study notes and generates educatio
 | **Gemini AI**  | Google's AI model for generating quiz questions from PDF content            |
 | **PDF Parse**  | Library for extracting text from PDF files                                  |
 | **Jest**       | Testing framework for unit and integration tests                            |
-| **Docker**     | Containerization for consistent development and production environments (yet to be implemented)   |
+| **Docker**     | Containerization for consistent development and production environments     |
 | **AWS**        | Hosting platform for the backend services                                   |
 
 ## 💡 Features
@@ -39,7 +39,6 @@ study-buddai-be/
 ├── routes/              # API route definitions
 ├── services/            # Service layer (PDF parsing, file upload)
 ├── middleware/          # Custom middleware
-├── types/               # TypeScript type definitions
 ├── utils/               # Utility functions
 ├── app.ts               # Express application setup
 └── listen.ts            # Server startup
@@ -122,17 +121,35 @@ npm run build
 npm start
 ```
 
-### Docker Setup (yet to be implemented)
+### Docker Setup 
 
-1. Build the Docker image:
-   ```bash
-   docker build -t study-buddai-be .
-   ```
+## 🐳 Docker Commands
+```bash
+# Development (with hot-reload)
+docker-compose -f ../study-buddai-deploy/docker-compose.yml up backend
 
-2. Run the container:
-   ```bash
-   docker run -p 8080:8080 -d --name study-buddai-backend study-buddai-be
-   ```
+# Production build
+docker build -t studybuddai-be -f Dockerfile.prod .
+```
+
+## 🔐 Environment Secrets
+Required `.env`:
+```env
+MYSQL_HOST=db
+MYSQL_USER=root
+MYSQL_PASSWORD=yourpassword
+JWT_SECRET=yoursecret
+```
+
+## 🚨 Troubleshooting
+- **MySQL Connection Issues**:
+  ```bash
+  docker-compose exec db mysql -u root -p
+  ```
+- **TypeScript Build Errors**:
+  ```bash
+  npx tsc --noEmit
+  ```
 
 ## 🧪 Testing
 
