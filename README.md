@@ -192,7 +192,7 @@ The application uses a MySQL database with the following main tables:
 4. Push to the branch: `git push origin feature-name`
 5. Submit a pull request
 
-👥 Contributors
+## 👥 Contributors
 This project was developed as a team and part of the Northcoders Bootcamp with:
  
 [emerrafter1](https://github.com/emerrafter1)
