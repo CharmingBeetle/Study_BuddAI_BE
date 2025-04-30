@@ -4,6 +4,21 @@ Welcome to the backend repository for Study BuddAI, our final group project as p
 
 Study BuddAI allows users to upload their PDF study notes and generates educational quizzes based on the content using the Gemini AI API. This repository contains the server-side code that powers the application.
 
+## Demo
+[![Canva Video](https://img.shields.io/badge/▶-Watch%20Demo-blue)](https://www.canva.com/design/DAGk-OYPdDw/WaVbKaRpJ0vBj3ri2hu7AA/watch?utm_content=DAGk-OYPdDw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf649f59812)
+
+## Screenshots
+![Screenshot 1](./assets/Screenshot%20from%202025-04-30%2019-31-03.png)
+![Screenshot 2](./assets/Screenshot%20from%202025-04-30%2019-31-19.png)
+![Screenshot 3](./assets/Screenshot%20from%202025-04-30%2019-31-34.png)
+![Screenshot 4](./assets/Screenshot%20from%202025-04-30%2019-31-42.png)
+![Screenshot 5](./assets/Screenshot%20from%202025-04-30%2019-31-44.png)
+![Screenshot 6](./assets/Screenshot%20from%202025-04-30%2019-32-34.png)
+![Screenshot 7](./assets/Screenshot%20from%202025-04-30%2019-32-38.png)
+![Screenshot 8](./assets/Screenshot%20from%202025-04-30%2019-32-43.png)
+![Screenshot 9](./assets/Screenshot%20from%202025-04-30%2019-32-50.png)
+![Screenshot 10](./assets/Screenshot%20from%202025-04-30%2019-33-00.png)
+
 ## 🚀 Tech Stack
 
 | Technology     | Description                                                                 |
