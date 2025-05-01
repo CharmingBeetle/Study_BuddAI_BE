@@ -7,6 +7,9 @@ Study BuddAI allows users to upload their PDF study notes and generates educatio
 ## Demo
 [![Canva Video](https://img.shields.io/badge/▶-Watch%20Demo-blue)](https://www.canva.com/design/DAGk-OYPdDw/WaVbKaRpJ0vBj3ri2hu7AA/watch?utm_content=DAGk-OYPdDw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf649f59812)
 
+## Hosted App 
+[Try out the app!](https://main.d2kavmrnv3biu0.amplifyapp.com/)
+
 ## Screenshots
 ![Screenshot 1](./assets/Screenshot%20from%202025-04-30%2019-31-03.png)
 ![Screenshot 2](./assets/Screenshot%20from%202025-04-30%2019-31-19.png)
