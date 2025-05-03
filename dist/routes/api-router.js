@@ -1,29 +1,23 @@
 "use strict";
-// export const apiRouter = require("express").Router();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.apiRouter = void 0;
-// import usersRouter from "./users-router";
-// import {quizzesRouter} from "./quizzes-router";
-// // import {filesRouter} from "./files-router";
-// // import {questionsRouter} from "./questions-router";
-// // import {optionsRouter} from "./options-router";
-// // import {quizAttemptsRouter} from "./quiz-attempts-router";
-// // import {answersAttemptRouter} from "./answers-attempt-router";
-// apiRouter.use("/users", usersRouter);
-// // apiRouter.use("/quizzes", quizzesRouter);
-// // apiRouter.use("/upload", filesRouter);
-// // apiRouter.use("/questions", questionsRouter);
-// // apiRouter.use("/question_options", optionsRouter)
-// // apiRouter.use("/attempt", quizAttemptsRouter)
-// // apiRouter.use("/attempt_answer/", answersAttemptRouter)
 const express_1 = require("express");
 const users_router_1 = __importDefault(require("./users-router"));
+const quizzes_router_1 = __importDefault(require("./quizzes-router"));
 const questions_router_1 = __importDefault(require("./questions-router"));
+const question_options_router_1 = __importDefault(require("./question-options-router"));
+const quiz_attempts_router_1 = __importDefault(require("./quiz-attempts-router"));
+const answers_attempt_router_1 = __importDefault(require("./answers-attempt-router"));
+const generate_quiz_router_1 = __importDefault(require("./generate-quiz-router"));
 const apiRouter = (0, express_1.Router)();
 exports.apiRouter = apiRouter;
 apiRouter.use("/users", users_router_1.default);
+apiRouter.use("/quizzes", quizzes_router_1.default);
 apiRouter.use("/questions", questions_router_1.default);
-apiRouter.use("/questions/:quiz_id", questions_router_1.default);
+apiRouter.use("/question_options", question_options_router_1.default);
+apiRouter.use("/attempt_answer", answers_attempt_router_1.default);
+apiRouter.use("/attempt", quiz_attempts_router_1.default);
+apiRouter.use("/generate_quiz", generate_quiz_router_1.default);

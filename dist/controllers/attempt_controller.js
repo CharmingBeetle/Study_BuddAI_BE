@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postResults = exports.postAttempt = void 0;
+exports.getResults = exports.postAttempt = void 0;
 const attempt_models_1 = require("../models/attempt_models");
 const generateResults_1 = require("../generateResults");
 const postAttempt = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -23,15 +23,14 @@ const postAttempt = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.postAttempt = postAttempt;
-const postResults = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getResults = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const attemptId = Number(req.params.attempt_id);
         const result = yield (0, generateResults_1.generateResults)(attemptId);
         res.status(200).send({ result });
     }
     catch (err) {
-        // console.log(err)
         next(err);
     }
 });
-exports.postResults = postResults;
+exports.getResults = getResults;

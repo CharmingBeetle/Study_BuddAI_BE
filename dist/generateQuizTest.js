@@ -21,7 +21,6 @@ const questions_model_1 = require("./models/questions_model");
 const options_model_1 = require("./models/options_model");
 const ai = new genai_1.GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const createQuiz = (params) => __awaiter(void 0, void 0, void 0, function* () {
-    // Add this debug log immediately
     var _a;
     // Validate all parameters
     if (Object.values(params).some(val => typeof val === 'number' ? isNaN(val) : !val)) {
