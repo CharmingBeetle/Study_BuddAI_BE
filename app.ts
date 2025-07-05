@@ -9,6 +9,7 @@ import {
   handleCustomErrors 
 } from "./controllers/errors.controller";
 import { apiRouter } from "./routes/api-router";
+import filesRouter from "./routes/files-router";
 
 // init app
 const app = express();
@@ -25,7 +26,6 @@ app.get("/", (req: Request, res: Response) => {
 // routers
 app.use("/api", apiRouter);
 
-import filesRouter from "./routes/files-router";
 app.use("/files", filesRouter);
 
 // error handling
