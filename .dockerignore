@@ -1,0 +1,8 @@
+# Inside Study_BuddAI_BE/.dockerignore
+node_modules/
+.git/
+.env*
+!.env.production
+
+#Google Cloud credentials
+google-key.json

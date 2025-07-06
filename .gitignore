@@ -5,3 +5,5 @@ node_modules
 .env* 
 .env.aws
 
+#Google Cloud credentials
+google-key.json
